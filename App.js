@@ -40,6 +40,11 @@ export default function App() {
         setProducts(current => current.filter(product => product.id !== productSelected.id)) //agarra prod actuales y filtra por el id que sea igual al prod seleccionado
         setModalVisible(false)
       }
+
+      const handleProductUpdate = (updatedProducts) => {
+        setProducts(updatedProducts);
+      };
+
 return (
   <View style={styles.container}>
     <AddProduct
@@ -54,15 +59,9 @@ return (
     />
     {/* flatlist con items que se destructuran y listas de productos q devuelve componentes*/}
 
-    <Button
-      title={isCompleted ? 'Completado' : 'Agregar'}
-      onPress={isCompleted ? undefined : handlerAddProduct}
-      style={isCompleted ? styles.completedButton : styles.addButton}
-      titleStyle={isCompleted ? styles.completedButtonText : styles.addButtonText}
-    />
-
       <ListProduct
-        products = {products}
+        products={products}
+        onProductUpdate={handleProductUpdate}
         onModal = {handlerModal}
       />
 
