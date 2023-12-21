@@ -18,18 +18,25 @@ const ListProduct = ({ products, onProductUpdate, onModal }) => {
     onModal(item);
   };
 
-  const renderProduct = ({ item }) => (
-    <View style={styles.itemContainer}>
-      <CardProduct item={item} onModal={handleModal} />
-      {!item.completed && (
-        <Button
-          title="Completado"
-          onPress={() => handleComplete(item.id)}
-          color="#007AFF" // Color del botón
-        />
-      )}
-    </View>
-  );
+  const renderProduct = ({ item }) => {
+    const itemContainerStyle = [
+      styles.itemContainer,
+      item.completed && styles.completedItem, // Apply completedItem style if item is completed
+    ];
+
+    return (
+      <View style={itemContainerStyle}>
+        <CardProduct item={item} onModal={handleModal} />
+        {!item.completed && (
+          <Button
+            title="Completado"
+            onPress={() => handleComplete(item.id)}
+            color="#007AFF" // Color del botón
+          />
+        )}
+      </View>
+    );
+  };
 
   return (
     <FlatList
@@ -53,6 +60,10 @@ const styles = StyleSheet.create({
   },
   flatList: {
     width: '100%',
+  },
+  completedItem: {
+    backgroundColor: 'lightgreen', // Style for completed items
+    // Add other styles for completed items if needed
   },
 });
 

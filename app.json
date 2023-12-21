@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "proyect-app",
-    "slug": "proyect-app",
+    "name": "clase6",
+    "slug": "clase6",
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "orientation":"portrait",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
